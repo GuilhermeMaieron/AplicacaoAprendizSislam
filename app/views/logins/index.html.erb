@@ -1,0 +1,19 @@
+<%= form_for @login, url: logar_path do |l| %>
+
+  <div class="Novo">
+    <p>
+      <%= @error %>
+      <%= l.label :Username%><br>
+      <%= l.text_field :username %>
+    </p>
+
+    <p>
+      <%= l.label :Senha%><br>
+      <%= l.text_field :senha %>
+    </p>
+    <p>
+
+    <%= l.submit %>
+    </p>
+  </div>
+<%end%>

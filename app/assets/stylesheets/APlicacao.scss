@@ -1,0 +1,18 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+$tamanho-resto: 75%;
+
+
+.quadradao{
+  min-height: 1000px;
+  width: $tamanho-resto;
+  margin: 0px auto;
+  background-color: white;
+  z-index: 1;
+}
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+  background-color:  #afcd6e  ;
+}

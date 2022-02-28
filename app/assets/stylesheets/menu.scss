@@ -1,0 +1,76 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+$menu-height: 150px;
+$tamanho-menu: 89%;
+$borda-imagem: 10;
+$tamanho-fotoperfil : 3%;
+
+.square {
+  position: absolute;
+  height: $menu-height;
+  width: 100%;
+  background-color: #555;
+}
+
+.Content {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $menu-height - 6;
+  left: (100% - $tamanho-menu);
+  width: $tamanho-menu;
+  top: 0px;
+  font-size: 36px;
+  color: white;
+  border-style: dashed;
+
+
+
+}
+
+.links {
+
+color: white;
+
+}
+
+.logo {
+  position: absolute;
+  top: ($menu-height - ($menu-height * ( 0.01 * (100 - $borda-imagem))));
+  left: ($tamanho-menu * (0.001 * $borda-imagem));
+  width: 100% - $tamanho-menu - (2 * ($tamanho-menu * (0.001 * $borda-imagem)));
+  height: ($menu-height - ($menu-height * (0.01 * $borda-imagem * 2)));
+
+}
+
+.fotoperfil {
+
+  position: absolute;
+  top: ($menu-height - ($menu-height * ( 0.01 * (100 - $borda-imagem))));
+  left: ($tamanho-menu * (0.001 * $borda-imagem));
+  width: $tamanho-fotoperfil;
+  height: width;
+
+}
+
+.nomeusuario {
+  position: absolute;
+  top: ($menu-height - ($menu-height * ( 0.0115 * (100 - $borda-imagem))));
+  left: ($tamanho-menu * (0.001 * $borda-imagem)) + $tamanho-fotoperfil;
+  width: $tamanho-fotoperfil;
+  height: width;
+  font-size: 30px;
+
+}
+
+
+
+.resto {
+
+  position: relative;
+  text-align: center;
+  top: $menu-height + 30 ;
+  background-color: white;
+
+}

@@ -1,0 +1,27 @@
+<h1>Lista dos Artigos</h1>
+
+<table class="Tabela">
+  <tr>
+    <th>Título</th>
+    <th>Conteúdo</th>
+    <th>Data</th>
+    <th>Autor</th>
+  </tr>
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= article.data %></td>
+      <td><%= Login.find(article.login_id).username %></td>
+
+      <td><%= link_to 'Ver', article_path(article) ,class:'trecoupdate'%></td>
+      <% if session[:login_id] == article.login_id%>
+      <td><%= link_to 'Editar', edit_article_path(article),class:'trecoupdate' %></td>
+      <td><%= link_to 'Deletar', article_path(article),
+                   method: :delete, data: { confirm: 'Are you sure?' } ,class:'deletearticle'%></td>
+      <%end%>
+
+
+    </tr>
+  <% end %>
+</table>

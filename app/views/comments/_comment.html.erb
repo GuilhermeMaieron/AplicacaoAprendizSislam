@@ -1,0 +1,20 @@
+<div class="">
+
+  <p>
+    <strong>Autor:</strong>
+    <%= Login.find(comment.c_login_id).username %>
+  </p>
+  <p>
+    <strong>Título:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+
+    <td><%= link_to 'Destroy Comment', [comment.article, comment],
+                 method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </p>
+
+</div>

@@ -1,0 +1,24 @@
+<p class="Novo">
+  <strong>Autor:</strong><br>
+  <%= @autor.username  %>
+  <br>
+  <br>
+  <strong>Título:</strong><br>
+  <%= @article.title  %>
+
+  <br>
+
+</p>
+
+<p class="Textosla">
+  <strong>Texto:</strong><br>
+  <%= @article.text %>
+</p>
+
+<h2>Commentários</h2>
+<%= render @article.comments %>
+
+<h2>Comentar:</h2>
+<%= render "comments/form" %>
+
+<%= link_to 'Editar Artigo', edit_article_path(@article), class: "Novo" %> |

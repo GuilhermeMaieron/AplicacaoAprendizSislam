@@ -1,0 +1,56 @@
+
+
+<input type="button" name="sla" value="=" style="position: absolute; font-size: 20px; z-index: 2; top: 32px; right: 8px" onclick='botao()'' >
+
+<div class="Menuzin", id="memu">
+
+  <div class="square">
+
+
+    <%= image_tag 'sislamlogo.png', class:'logo' %>
+
+    <div class="Content">
+    <p>
+      <%= link_to 'Lista de Artigos', articles_path , class:"links"%>
+      <%= link_to 'Novo Artigo', new_article_path , class:"links" %>
+
+
+    <% if !!session[:login_id] %>
+        <%= link_to 'Perfil', login_path(current_user), class:"links"  %>
+
+        <%= image_tag current_user.imgurl, class:"fotoperfil" %>
+        <div class="nomeusuario">
+        <p class="nomeusuario">
+          <%= current_user.username %>
+          <%= link_to 'Logout', logout_path, class:"links"  %>
+        </p>
+        </div>
+    <%else%>
+        <%= link_to 'Login/Cadastro', logins_lscreen_path, class:"links"  %>
+    <%end%>
+
+    </p>
+
+
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+function botao()
+{
+  var memu = document.getElementById("memu");
+  if(memu.style.display == "none")
+  {
+    memu.style.display = "block";
+
+  }else{
+
+    memu.style.display = "none";
+  }
+
+}
+
+
+</script>

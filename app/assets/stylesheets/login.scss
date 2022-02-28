@@ -1,0 +1,49 @@
+$tamanho-infos: 70%;
+
+.PerfilInfos {
+
+  position: absolute;
+  text-align: left;
+  justify-content: flex-start;
+  left: 99.75% - $tamanho-infos;
+  min-height: 775px;
+  margin: 0px auto;
+  width: $tamanho-infos;
+  font-size: 36px;
+
+}
+
+.PerfilImagen
+{
+  position: absolute;
+  left: ((92% - $tamanho-infos)/8);
+  width: 92% - $tamanho-infos;
+  height: width;
+  margin: 0px auto;
+}
+.ImagemMesmo {
+  width: 100%;
+  height: 100%;
+}
+
+.DeletarEditar{
+  position: absolute;
+  width: 100%;
+  top: 105%;
+  height: 450px;
+}
+
+.trecoupdate {
+  color: grey;
+  font-size: 24px;
+  font-weight: bold;
+
+}
+
+.deletearticle {
+  color: red;
+  font-size: 24px;
+  font-weight: bold;
+
+
+}

@@ -1,0 +1,49 @@
+$borda-tabela: 15%;
+$tamanho-texto: 80%;
+
+
+.Tabela, th, td{
+
+  border: 2px solid;
+  border-collapse: collapse;
+
+}
+
+.Tabela {
+  position: relative;
+  left: $borda-tabela;
+  width: (100% - ($borda-tabela * 2));
+
+}
+
+.Novo {
+
+color: black;
+font-size: 36px;
+font-weight: bolder;
+
+}
+
+.Novocoiso{
+
+  width: $tamanho-texto;
+  height: 100px;
+
+
+}
+
+.novotitulo{
+
+  width: $tamanho-texto;
+  height: 50px;
+
+}
+
+.Textosla{
+position: inherit;
+font-size: 20px;
+text-align: center;
+align-self: center;
+
+
+}

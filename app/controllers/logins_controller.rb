@@ -1,5 +1,9 @@
 class LoginsController < ApplicationController
-  skip_before_action :verificarlogin
+  add_flash_types :l_errado, :sucesso
+  skip_before_action :verificarlogin, only: [:show, :new, :create, :index, :lscreen, :logar]
+  before_action :verificarperfil, only: [:edit, :update, :destroy]
+
+
   def lscreen
   end
 
@@ -19,11 +23,17 @@ class LoginsController < ApplicationController
     @login = Login.find(params[:id])
   end
 
+  def adminpage
+    @login = Login.all
+
+  end
+
 
   def update
     @login = Login.find(params[:id])
 
     if @login.update(login_params)
+      flash[:sucesso] = "Você atualizou os dados de sua conta."
       redirect_to @login
     else
       render 'edit'
@@ -31,10 +41,10 @@ class LoginsController < ApplicationController
   end
 
   def logar
-
-    @login = Login.find_by(username: login_params[:username], senha: login_params[:senha])
+    @login = Login.find_by(username: login_params[:username], senha:  Digest::MD5.hexdigest(login_params[:senha]))
     if @login
       session[:login_id] = @login.id
+      flash[:sucesso] = "Você se logou na sua conta! Bem-vindo."
       redirect_to articles_path
     else
       @login = Login.new
@@ -50,7 +60,12 @@ class LoginsController < ApplicationController
 
   def create
     @login = Login.new(login_params)
+    @login.senha = Digest::MD5.hexdigest @login.senha
+    @login.senha_confirmation = Digest::MD5.hexdigest @login.senha_confirmation
+    #@login.confirma_senha = Digest::MD5.hexdigest @login.confirma_senha
     if @login.save
+
+      flash[:sucesso] = "Você criou sua conta, agora só falta se logar!"
       redirect_to logins_path
     else
       render 'new'
@@ -61,10 +76,32 @@ class LoginsController < ApplicationController
     @login = Login.find(params[:id])
     @login.destroy
 
+    if(@login.id != current_user.id)
+      flash[:l_errado] = "Você deletou uma conta"
+      redirect_to adminpage_path
+    else
+      flash[:l_errado] = "Você deletou sua conta"
+      logout
+    end
+
+
   end
 
 private
   def login_params
-    params.require(:login).permit(:username, :email, :senha, :idade, :confirma_senha, :imgurl)
+    params.require(:login).permit(:username, :email, :senha, :idade, :confirma_senha, :imgurl, :admin, :senha_confirmation)
   end
+
+  def verificarperfil
+    @login = Login.find(params[:id])
+    if current_user.id == @login.id || current_user.admin
+
+    else
+
+      flash[:l_errado] = "Você não tem acesso a essa parte desse perfil."
+      redirect_to logins_path
+
+    end
+  end
+
 end

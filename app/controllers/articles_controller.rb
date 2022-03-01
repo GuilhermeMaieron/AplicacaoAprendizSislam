@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
 skip_before_action :verificarlogin, only: [:index, :show]
 before_action :verificarautor
 skip_before_action :verificarautor, only: [:index, :show, :new, :create]
+add_flash_types :l_errado, :sucesso, :aviso
 
 def new
   @article = Article.new
@@ -18,6 +19,7 @@ def create
   @article.login_id = current_user.id
   @article.data = Date.today
   if @article.save
+    flash[:sucesso] = "Você criou um novo artigo."
     redirect_to @article
   else
     render 'new'
@@ -40,6 +42,7 @@ def update
   @article = Article.find(params[:id])
 
   if @article.update(article_params)
+    flash[:sucesso] = "Você editou um  artigo."
     redirect_to @article
   else
 
@@ -62,10 +65,10 @@ private
   end
 
   def verificarautor
-      if session[:login_id] == Article.find(params[:id]).login_id
+      if session[:login_id] == Article.find(params[:id]).login_id || current_user.admin
 
       else
-        flash[:alert] = "ta errado"
+        flash[:l_errado] = "Você não é o autor original desse artigo."
         redirect_to logins_path
       end
   end

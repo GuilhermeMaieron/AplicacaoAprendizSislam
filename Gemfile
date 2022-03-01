@@ -16,6 +16,8 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'execjs'
 
+gem 'rails-i18n'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -27,6 +29,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pry'
 
+gem 'flag-icons-rails'
+gem 'materializecss'
 #gem 'mini_racer'
 
 # Use ActiveModel has_secure_password

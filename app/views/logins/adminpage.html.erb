@@ -1,0 +1,22 @@
+
+<table class="Tabela">
+  <tr>
+    <th>Nome de Usuario</th>
+    <th>Email</th>
+    <th>Data Nascimento</th>
+    <th>Criado em</th>
+    <th>Admin</th>
+  </tr>
+  <% @login.each do |login| %>
+    <tr>
+      <td><%= image_tag login.imgurl, class:"Imagenzinha" %></td>
+      <td><%= link_to login.username, login_path(Login.find(login.id))%></td>
+      <td><%= login.email %></td>
+      <td><%= login.idade %></td>
+      <td><%= login.created_at %></td>
+
+      <td><%= login.admin %></td>
+
+    </tr>
+  <% end %>
+</table>

@@ -19,12 +19,21 @@
         <%= link_to 'Perfil', login_path(current_user), class:"links"  %>
 
         <%= image_tag current_user.imgurl, class:"fotoperfil" %>
+
+        <%if current_user.admin == true %>
+
+            <%= link_to 'Gerenciar Usuarios', adminpage_path, class:"links"  %>
+
+        <%end%>
+
+
         <div class="nomeusuario">
         <p class="nomeusuario">
           <%= current_user.username %>
           <%= link_to 'Logout', logout_path, class:"links"  %>
         </p>
         </div>
+
     <%else%>
         <%= link_to 'Login/Cadastro', logins_lscreen_path, class:"links"  %>
     <%end%>

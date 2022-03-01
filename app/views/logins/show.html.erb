@@ -1,21 +1,25 @@
 <div class="PerfilInfos">
 <p class="InfosPerfilson">
   <strong>Nome de Usuário: </strong>
-  <%= current_user.username%>
+  <%= @login.username %>
 </p>
 <br>
 <p class="InfosPerfilson">
 
   <strong>Email: </strong>
-  <%= current_user.email%>
+  <%= @login.email%>
 </p>
 <br>
 <p class="InfosPerfilson">
 
   <strong>Data de Nascimento: </strong>
-  <%= current_user.idade%>
+  <%= @login.idade%>
 </p>
 <br>
+<% if current_user == nil || current_user.id != @login.id  %>
+
+
+<%else%>
 <p class="InfosPerfilson">
 
   <strong>Senha: </strong>
@@ -30,20 +34,35 @@
 
 </p>
 
+<%end%>
+
+
 </div>
 
 <div class="PerfilImagen">
-  <%= image_tag current_user.imgurl, class:"ImagemMesmo" %>
+  <%= image_tag @login.imgurl, class:"ImagemMesmo" %>
   <div class="DeletarEditar">
 
+<% if current_user == nil  %>
+
+<%else%>
+
+<% if current_user.id == @login.id || current_user.admin  %>
+
 <div class="">
-  <%= link_to 'Editar', edit_login_path(current_user), class:'Novo' %>
+  <%= link_to 'Editar', edit_login_path(@login.id), class:'Novo' %>
 </div>
+
 <div class="">
   <br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
-  <%= link_to 'Deletar Conta', login_path(current_user),
+  <%= link_to 'Deletar Conta', login_path(@login.id),
                method: :delete, data: { confirm: 'Are you sure?' }, class:'Novo' %>
 </div>
+
+<%end%>
+<%end%>
+
+
 
 
 

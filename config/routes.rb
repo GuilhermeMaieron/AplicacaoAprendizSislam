@@ -10,7 +10,7 @@
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
 
-
+  get 'logins/adminpage', action: :adminpage, controller: "logins", as: 'adminpage'
   get 'logins/logout', action: :logout, controller: "logins", as: 'logout'
   post 'logins/logar', action: :logar, controller: "logins", as: 'logar'
   get 'logins/lscreen', to: "logins#lscreen"

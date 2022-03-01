@@ -15,11 +15,11 @@
     </p>
     <p>
       <%= l.label :Senha%><br>
-      <%= l.text_field :senha %>
+      <%= l.password_field :senha %>
     </p>
     <p>
       <%= l.label 'Confirme sua senha'%><br>
-      <%= l.text_field :confirma_senha %>
+      <%= l.password_field :senha_confirmation %>
     </p>
     <p>
       <%= l.label 'Data de Nascimento'%><br>
@@ -34,8 +34,13 @@
     <%= l.label 'Preview Foto'%><br>
     <img src="" id="ImageTest" width="200px" height="200px">
     <p>
+      <%= l.label 'Admin?'%><br>
+      <%= l.check_box :admin %>
+    </p>
+    <p>
     <%= l.submit %>
     </p>
+
   </div>
 <%end%>
 

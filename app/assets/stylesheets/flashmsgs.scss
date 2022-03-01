@@ -1,7 +1,7 @@
 
 .sucesso {
-    position: absolute;
-    color: lime;
+    position: inherit;
+    color: white;
     font-size: 36px;
   top: 5%;
   z-index: 5;
@@ -10,7 +10,7 @@
   }
 
   .l_errado {
-    position: absolute;
+    position: inherit;
     color: red;
     font-size: 36px;
   top: 5%;

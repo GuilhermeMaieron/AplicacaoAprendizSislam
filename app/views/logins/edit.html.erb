@@ -18,17 +18,25 @@
       <%= l.date_field :idade, class:'trecoupdate' %>
     </p>
     <br>
+    <% if current_user.id == @login.id %>
     <p class="InfosPerfilson">
 
       <strong>Senha: </strong>
       <%= l.text_field :senha, class:'trecoupdate' %>
     </p>
+    <%end%>
 
     <p>
       <%= l.label 'Foto de Perfil (Somente URL)'%><br>
       <%= l.text_field :imgurl, id:'Txt' , class:'trecoupdate'%>
       <input type="button" name="Botao" value="Testar Imagem" onclick='mostrarimagem()'>
     </p>
+    <% if current_user.admin %>
+    <p>
+      <%= l.label 'Admin?'%><br>
+      <%= l.check_box :admin %>
+    </p>
+    <%end%>
 
     <p>
     <%= l.submit %>

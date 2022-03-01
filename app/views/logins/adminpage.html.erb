@@ -1,11 +1,13 @@
 
 <table class="Tabela">
   <tr>
+    <th>Foto de Perfil</th>
     <th>Nome de Usuario</th>
     <th>Email</th>
     <th>Data Nascimento</th>
-    <th>Criado em</th>
-    <th>Admin</th>
+    <th>Horario Criaçao Conta</th>
+    <th>Data Criaçao Conta</th>
+    <th>É Admin?</th>
   </tr>
   <% @login.each do |login| %>
     <tr>
@@ -13,7 +15,8 @@
       <td><%= link_to login.username, login_path(Login.find(login.id))%></td>
       <td><%= login.email %></td>
       <td><%= login.idade %></td>
-      <td><%= login.created_at %></td>
+      <td><%= login.created_at.strftime("%T") %></td>
+      <td><%= login.created_at.strftime("%F") %></td>
 
       <td><%= login.admin %></td>
 

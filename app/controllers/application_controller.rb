@@ -5,19 +5,19 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-before_action :verificarlogin
+before_action :verificaruser
 
   private
     def logged_in
-      !!session[:login_id]
+      !!session[:user_id]
     end
 
 
 
-    def verificarlogin
+    def verificaruser
         if !current_user
           flash[:l_errado] = "Você precisa estar logado para fazer isso."
-          redirect_to logins_path
+          redirect_to users_path
         end
     end
 end

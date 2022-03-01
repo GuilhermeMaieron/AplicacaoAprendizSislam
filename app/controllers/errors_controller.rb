@@ -1,5 +1,5 @@
 class ErrorsController < ApplicationController
-  skip_before_action :verificarlogin
+  skip_before_action :verificaruser
   def not_found
     render status: 404
   end

@@ -15,8 +15,8 @@
       <%= link_to 'Novo Artigo', new_article_path , class:"links" %>
 
 
-    <% if !!session[:login_id] %>
-        <%= link_to 'Perfil', login_path(current_user), class:"links"  %>
+    <% if !!session[:user_id] %>
+        <%= link_to 'Perfil', user_path(current_user), class:"links"  %>
 
         <%= image_tag current_user.imgurl, class:"fotoperfil" %>
 
@@ -35,7 +35,7 @@
         </div>
 
     <%else%>
-        <%= link_to 'Login/Cadastro', logins_lscreen_path, class:"links"  %>
+        <%= link_to 'User/Cadastro', users_lscreen_path, class:"links"  %>
     <%end%>
 
     </p>

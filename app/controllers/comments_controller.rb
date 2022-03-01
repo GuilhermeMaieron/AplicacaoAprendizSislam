@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
 add_flash_types :l_errado, :sucesso
-before_action :verificarlogin
+before_action :verificaruser
 before_action :verificarautorc, only: [:destroy]
 
 
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.new(comment_params)
-    @comment.c_login_id = current_user.id
+    @comment.c_user_id = current_user.id
     if @comment.save
       flash[:sucesso] = "Você criou um novo comentário."
       redirect_to article_path(@article)
@@ -31,11 +31,11 @@ before_action :verificarautorc, only: [:destroy]
     end
 
     def verificarautorc
-        if session[:login_id] == Comment.find(params[:id]).c_login_id || current_user.admin
+        if session[:user_id] == Comment.find(params[:id]).c_user_id || current_user.admin
 
         else
           flash[:l_errado] = "Você não é o autor original desse comentário."
-          redirect_to logins_path
+          redirect_to users_path
         end
     end
 

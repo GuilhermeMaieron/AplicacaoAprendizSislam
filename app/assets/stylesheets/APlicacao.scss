@@ -1,10 +1,11 @@
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
 $tamanho-resto: 75%;
-
+$tamanho-botao: 36px;
+$tamanho_img: 36px;
 
 .quadradao{
-  min-height: 1000px;
+  min-height: 1200px;
   width: $tamanho-resto;
   margin: 0px auto;
   background-color: white;
@@ -15,4 +16,148 @@ body {
   font: 100% $font-stack;
   color: $primary-color;
   background-color:  #afcd6e  ;
+}
+
+.allusers {
+
+    position: fixed;
+    right: 0;
+    bottom: 0%;
+    width: $tamanho-botao * 2;
+    height: $tamanho-botao;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    z-index: 10;
+}
+
+.createchat {
+    right: (98% - $tamanho-resto) / 2 ;
+    bottom: 0%;
+    width: $tamanho-botao * 2;
+    height: $tamanho-botao;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    z-index: 10;
+}
+
+.chatbut {
+  position: fixed;
+  right: (100% - $tamanho-resto) / 2  ;
+  bottom: 0%;
+  width: 100% - (100% - $tamanho-resto) / 2;
+  height: $tamanho-botao;
+  margin-bottom: 0.25em;
+  margin-right: -0.5em;
+  z-index: 10;
+  justify-content: flex-start;
+  text-align: right;
+}
+
+.userSquare {
+
+  border-style: solid;
+  border-width: medium;
+  border-color: gray;
+  position: fixed;
+  bottom: 0%;
+  right: 0;
+  width: (98% - $tamanho-resto) / 2 ;
+  height: 77%;
+  z-index: 8;
+  background-color: white;
+  border-radius:10px;
+
+margin-bottom: 0.25em;
+}
+
+.Userlist {
+
+  table, th, td{
+   border: 0px;
+ }
+  width: 100%;
+
+
+
+}
+
+.usercontent{
+  height: 100%;
+  overflow: auto;
+}
+
+.createchatt{
+  height: 100%;
+  overflow: auto;
+
+}
+
+.chatSquare {
+
+
+  border-style: solid;
+  border-width: medium;
+  border-color: gray;
+  position: fixed;
+  bottom: $tamanho-botao + 10;
+  right: (100% - $tamanho-resto) / 2;
+  width: (98% - $tamanho-resto) / 2 ;
+  height: 50%;
+  z-index: 8;
+  background-color: white;
+  border-radius:10px;
+  text-align: center;
+
+  margin-bottom: 0.25em;
+}
+
+.nomechat {
+
+    width: 90%;
+    height: 60px;
+    font-size: 32px;
+}
+
+.selectchat
+{
+  text-align: center;
+  width: 90%;
+  height: 280px;
+  font-size: 20px;
+
+}
+
+
+
+.Userlistname {
+
+
+
+  a:link, a:visited{
+    color: black;
+    width: 100%;
+    padding: 14px 0px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 16px;
+    }
+    text-align: left;
+    font-family: serif;
+    font-weight: bold;
+    a:hover , a:active{
+      background-color: silver;
+    }
+
+
+
+    }
+
+
+
+
+
+.UserTableImg {
+  height: $tamanho_img;
+  width: $tamanho_img;
 }

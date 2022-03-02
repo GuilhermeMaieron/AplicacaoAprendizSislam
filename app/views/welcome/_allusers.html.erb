@@ -1,0 +1,59 @@
+<input type="button" name="sla" value="Usuarios" class="allusers" onclick='botao_users("user_menu")' >
+
+<!-- LSITA DE USUARIOS -->
+<div class="userSquare" id="user_menu">
+ <div class="usercontent">
+   <table class="Userlist">
+     <% @user = User.all %>
+     <% @user.each do |user| %>
+       <tr>
+         <td class="UserTableImg"><%= image_tag user.imgurl, class:"UserTableImg" %></td>
+         <td class="Userlistname"><%= link_to user.username, user_path(User.find(user.id)), class: ""%></td>
+       </tr>
+     <% end %>
+   </table>
+ </div>
+
+</div>
+<!-- CRIAÇAO CHAT -->
+
+
+
+<div style="display: none"  class="chatSquare" id="create_chat">
+
+
+
+ <div class="createchatt">
+  <%= form_for Chat.new do |c| %>
+    <br>
+    <%=c.label 'Nome do chat' %>
+    <%= c.text_field :chat_name , class: 'nomechat'%>
+    <br>
+    <br>
+    <%=c.label 'Participantes:' %>
+    <br>
+
+    <%=c.select :user_ids, User.all.pluck(:username, :id),{}, {multiple: true, class: 'selectchat'}%>
+    <p>
+    <%= c.submit %>
+    </p>
+  <%end%>
+
+<!-- Chats existentes -->
+ </div>
+
+</div>
+
+<div class="chatbut">
+
+    <% @chat = Chat.all %>
+
+    <% @chat.each do |chat| %>
+
+
+        <%= content_tag(:div, content_tag(:p,"#{render "welcome/thechat"}"), class: "chatSquare", id: chat.id, style: 'display:none')%>
+        <%= button_tag chat.chat_name, onclick: "botao_users(#{chat.id})", class: 'createchat', type: 'button' %>
+    <%end%>
+      <input type="button" name="sla" value="Criar Chat" class="createchat" onclick='botao_users("create_chat")' >
+</div>
+<!-- SCRIPTS -->

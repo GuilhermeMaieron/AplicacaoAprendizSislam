@@ -27,32 +27,15 @@
     </p>
     <p>
       <%= l.label 'Foto de Perfil (Somente URL)'%><br>
-      <%= l.text_field :imgurl, id:'Txt'%>
+      <%= l.text_field :imgurl, id:'imageTxt'%>
     </p>
     <input type="button" name="Botao" value="Testar Imagem" onclick='mostrarimagem()'>
     <br>
     <%= l.label 'Preview Foto'%><br>
     <img src="" id="ImageTest" width="200px" height="200px">
     <p>
-      <%= l.label 'Admin?'%><br>
-      <%= l.check_box :admin %>
-    </p>
-    <p>
     <%= l.submit %>
     </p>
 
   </div>
 <%end%>
-
-<script type="text/javascript">
-
-function mostrarimagem()
-{
-  var imgg = document.getElementById('ImageTest');
-  var urll = document.getElementById('Txt');
-  imgg.src = urll.value;
-
-}
-
-
-</script>

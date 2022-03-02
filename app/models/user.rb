@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :articles, dependent: :destroy
+  has_many :chats_users
+  has_many :chats, through: :chats_users
   #attr_accessor :confirma_senha
   validates :username, null: false, length: { minimum: 5 }
   validates :email, null: false, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }

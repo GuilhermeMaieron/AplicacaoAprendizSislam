@@ -11,7 +11,7 @@ before_action :verificaruser
     def logged_in
       !!session[:user_id]
     end
-
+    
 
 
     def verificaruser

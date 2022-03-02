@@ -15,6 +15,8 @@
   post 'users/logar', action: :logar, controller: "users", as: 'logar'
   get 'users/lscreen', to: "users#lscreen"
 
+
+    resources :chats
     resources :users
     resources :articles do
       resources :comments

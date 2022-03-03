@@ -1,4 +1,4 @@
-<input type="button" name="sla" value="Usuarios" class="allusers" onclick='botao_users("user_menu")' >
+<input type="button" name="sla" value="Usuarios" class="allusers" onclick='botao_users_user("user_menu")' >
 
 <!-- LSITA DE USUARIOS -->
 <div class="userSquare" id="user_menu">
@@ -17,12 +17,7 @@
 </div>
 <!-- CRIAÇAO CHAT -->
 
-
-
 <div style="display: none"  class="chatSquare" id="create_chat">
-
-
-
  <div class="createchatt">
   <%= form_for Chat.new do |c| %>
     <br>
@@ -43,16 +38,22 @@
  </div>
 
 </div>
-
 <div class="chatbut">
+  <% if current_user != nil %>
 
-    <% @chat = Chat.all %>
+    <% @chats = Chat.joins(:chats_users).where(chats_users: {user_id: current_user.id}) %>
+    <% if @chats == nil %>
 
-    <% @chat.each do |chat| %>
+    <%else%>
+    <% @chats.each do |chat| %>
+        <div class="chatSquare" style="display:none"  id="<%="chat#{chat.id}"%>">
+          <%= render "welcome/thechat", chat: chat %>
+        </div>
+        <%= button_tag chat.chat_name, onclick: "botao_users('chat#{chat.id}')", class: 'createchat', type: 'button' %>
+    <%end%>
 
+    <%end%>
 
-        <%= content_tag(:div, content_tag(:p,"#{render "welcome/thechat"}"), class: "chatSquare", id: chat.id, style: 'display:none')%>
-        <%= button_tag chat.chat_name, onclick: "botao_users(#{chat.id})", class: 'createchat', type: 'button' %>
     <%end%>
       <input type="button" name="sla" value="Criar Chat" class="createchat" onclick='botao_users("create_chat")' >
 </div>

@@ -11,11 +11,6 @@ end
 def show
   @article = Article.find(params[:id])
   @autor = User.find(@article.user_id)
-  respond_to do |format|
-     format.html
-     format.xml { render :xml => @article.to_xml }
-     format.json { render :json => @article.to_json }
-   end
 end
 
 def create

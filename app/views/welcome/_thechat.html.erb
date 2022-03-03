@@ -1,0 +1,36 @@
+
+
+<div class="messagecontent" data-ultima-msg="<%= Time.now %>" id="<%="divmsg#{chat.id}"%>">
+  <% chat.messages.each do |message| %>
+  <% if message.sender_id == current_user.id %>
+  <p class="SuaMsg">
+    <%= User.find(message.sender_id).username + ": " %>
+    <br>
+    <%= message.msg_body %>
+  </p>
+
+  <%else%>
+
+  <p class="msgDeles">
+    <%= User.find(message.sender_id).username + ": " %>
+    <br>
+    <%= message.msg_body %>
+  </p>
+  <%end%>
+
+
+
+
+  <% end %>
+</div>
+
+
+<div class="message_form">
+  <%= form_for([chat, chat.messages.build], remote: true) do |m|%>
+    <%= m.text_field :msg_body , class: 'chatmsg'%>
+    <%= m.submit %>
+
+  <%end%>
+
+
+</div>

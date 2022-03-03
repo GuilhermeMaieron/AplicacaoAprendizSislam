@@ -10,13 +10,16 @@
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
 
+  get 'chats/request_chat', action: :request_chat, controller: "chats", as: 'request_chat'
   get 'users/adminpage', action: :adminpage, controller: "users", as: 'adminpage'
   get 'users/logout', action: :logout, controller: "users", as: 'logout'
   post 'users/logar', action: :logar, controller: "users", as: 'logar'
   get 'users/lscreen', to: "users#lscreen"
 
 
-    resources :chats
+    resources :chats do
+      resources :messages
+    end
     resources :users
     resources :articles do
       resources :comments

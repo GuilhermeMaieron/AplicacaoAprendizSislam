@@ -1,0 +1,1 @@
+$("#<%="divmsg#{@message.chat_id}"%>").append("<p class='SuaMsg'><%= User.find(@message.sender_id).username + ': ' %><br><%= @message.msg_body %></p>")

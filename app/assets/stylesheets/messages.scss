@@ -1,0 +1,19 @@
+$margem: 5px;
+$borda-redonda: 5px;
+
+
+.SuaMsg {
+  background-color: #c0d7bc;
+  text-align: right;
+  margin: $margem;
+  border-radius: $borda-redonda;
+
+}
+
+.msgDeles {
+
+  background-color: silver;
+  text-align: left;
+  margin: $margem;
+  border-radius: $borda-redonda;
+}

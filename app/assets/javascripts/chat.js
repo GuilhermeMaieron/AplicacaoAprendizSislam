@@ -1,26 +1,29 @@
 var valor = '';
 var lim = 0;
-var search_messages = setInterval(busca_mensagem, 1000)
+
+var search_messages = setInterval(busca_mensagem, 3000);
 
 function busca_mensagem() {
+  var divglobal = document.getElementById("div-global")
 $.ajax({
   type: "GET",
   url: "/chats/request_chat",
-  data: {created_at_gt: dat.getAttribute('data-ultima-msg')}
+  data: {created_at_gt: divglobal.getAttribute('data-ultima-msg')}
 
 }).done(function(data) {
-
-
-
   var today = new Date();
-  var time = today.getTime();
-  dat.setAttribute('created_at_gt', time)
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date+' '+time;
 
-  for(i = 0; i<data.length; i++)
+  for(i = 0; i< data.length; i++)
   {
-    $(dat).append("muahaha")
+    var dat = document.getElementById("divmsg"+data[i].chat_id);
+    $(dat).append("<p class='msgDeles'>"+data[i].user.username+':'+"<br>"+data[i].msg_body+ "</p>");
 
   }
+  divglobal.setAttribute('data-ultima-msg', dateTime);
+
 });
 }
 

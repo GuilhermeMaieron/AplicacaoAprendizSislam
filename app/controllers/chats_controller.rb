@@ -2,7 +2,6 @@ class ChatsController < ApplicationController
 
   def new
   end
-
   def create
     @chat = Chat.new(chat_params)
     @chat.user_ids = @chat.user_ids << current_user.id
@@ -16,11 +15,19 @@ class ChatsController < ApplicationController
   end
 
   def request_chat
-    @chats = Chat.all
-    @chats.created_at_gt
-
+    @messages = Message.where('created_at > ?', params[:created_at_gt]).where.not(sender_id: current_user.id)
+    @messages.to_json
+    render json: @messages.to_json(include: :user)
 
   end
+
+  def destroy
+    @chat = Chat.find(params[:id])
+    @chat.destroy
+
+    redirect_to request.referer
+  end
+
 
 private
   def chat_params

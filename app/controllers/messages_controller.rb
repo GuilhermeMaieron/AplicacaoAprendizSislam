@@ -15,15 +15,20 @@ class MessagesController < ApplicationController
 
   end
 
+
   def index
-
-    @messages = Message.where(chat_id: params[:chat_id])
-    @messages = Message.where('created_at > ?', params[:created_at_gt])
+    @messages = Message.where(chat_id: params[:chat_id]).where('created_at > ?', params[:created_at_gt]).where.not(sender_id: current_user.id)
     @messages.to_json
+    render json: @messages.to_json(include: :user)
+  end
 
-    render json: @messages
 
+  def destroy
+    @chat = Chat.find(params[:chat_id])
+    @message = @chat.messages.find(params[:id])
+    @message.destroy
 
+    redirect_to request.referer
   end
 
   private

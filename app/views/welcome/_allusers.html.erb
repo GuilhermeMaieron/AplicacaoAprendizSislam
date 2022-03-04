@@ -16,6 +16,7 @@
 
 </div>
 <!-- CRIAÇAO CHAT -->
+<%if current_user != nil %>
 
 <div style="display: none"  class="chatSquare" id="create_chat">
  <div class="createchatt">
@@ -38,7 +39,7 @@
  </div>
 
 </div>
-<div class="chatbut">
+<div class="chatbut" data-ultima-msg="<%= Time.now %>" id="div-global">
   <% if current_user != nil %>
 
     <% @chats = Chat.joins(:chats_users).where(chats_users: {user_id: current_user.id}) %>
@@ -57,4 +58,8 @@
     <%end%>
       <input type="button" name="sla" value="Criar Chat" class="createchat" onclick='botao_users("create_chat")' >
 </div>
+
+
+<%end%>
+
 <!-- SCRIPTS -->

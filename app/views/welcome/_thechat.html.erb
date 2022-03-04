@@ -1,12 +1,13 @@
-
-
-<div class="messagecontent" data-ultima-msg="<%= Time.now %>" id="<%="divmsg#{chat.id}"%>">
+<div class="messagecontent"  div-id="<%="#{chat.id}"%>" id="<%="divmsg#{chat.id}"%>">
   <% chat.messages.each do |message| %>
   <% if message.sender_id == current_user.id %>
+
   <p class="SuaMsg">
     <%= User.find(message.sender_id).username + ": " %>
     <br>
     <%= message.msg_body %>
+    <%= button_to 'X', [message.chat, message],
+                 method: :delete, data: { confirm: 'Are you sure?' }, class:'delete-msg', remote: true%>
   </p>
 
   <%else%>
@@ -17,20 +18,16 @@
     <%= message.msg_body %>
   </p>
   <%end%>
-
-
-
-
   <% end %>
 </div>
 
 
 <div class="message_form">
+  <%= button_to 'Deletar Chat', chat_path(chat.id),
+               method: :delete, data: { confirm: 'Are you sure?' }%>
+
   <%= form_for([chat, chat.messages.build], remote: true) do |m|%>
     <%= m.text_field :msg_body , class: 'chatmsg'%>
     <%= m.submit %>
-
   <%end%>
-
-
 </div>

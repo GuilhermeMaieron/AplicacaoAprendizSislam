@@ -3,7 +3,7 @@ $primary-color: #333;
 $tamanho-resto: 75%;
 $tamanho-botao: 36px;
 $tamanho_img: 36px;
-$tamanho_msg: 30%;
+$tamanho_msg: 35%;
 
 .messagecontent {
   position: absolute;
@@ -148,7 +148,7 @@ margin-bottom: 0.25em;
 .chatmsg {
 
   width: 90%;
-  height: 70%;
+  height: 100% - $tamanho_msg;
   vertical-align: top;
   font-size: 14px;
 

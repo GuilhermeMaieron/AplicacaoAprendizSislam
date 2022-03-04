@@ -17,3 +17,18 @@ $borda-redonda: 5px;
   margin: $margem;
   border-radius: $borda-redonda;
 }
+
+.delete-chat{
+  color: red;
+  width: 30%;
+  font-size: 10px;
+}
+
+.delete-msg{
+  font-size: 8px;
+  position: absolute;
+  position: absolute;
+  left: 0px;
+  margin-top: -2.5%;
+  width: 10%;
+}

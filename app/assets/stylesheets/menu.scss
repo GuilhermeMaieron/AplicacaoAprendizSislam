@@ -8,11 +8,14 @@ $tamanho-fotoperfil : 3%;
 .square {
   position: absolute;
   height: $menu-height;
-  width: 100%;
+  width: 99.25%;
   background-color: #555;
+  margin-top: 0em;
+  z-index: 5;
 }
 
 .Content {
+
   position: absolute;
   display: flex;
   justify-content: center;
@@ -23,10 +26,6 @@ $tamanho-fotoperfil : 3%;
   top: 0px;
   font-size: 36px;
   color: white;
-  border-style: dashed;
-
-
-
 }
 
 .links {
@@ -72,5 +71,4 @@ color: white;
   text-align: center;
   top: $menu-height + 30 ;
   background-color: white;
-
 }

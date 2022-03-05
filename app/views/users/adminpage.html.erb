@@ -1,0 +1,25 @@
+
+<table class="Tabela">
+  <tr>
+    <th>Foto de Perfil</th>
+    <th>Nome de Usuario</th>
+    <th>Email</th>
+    <th>Data Nascimento</th>
+    <th>Horario Criaçao Conta</th>
+    <th>Data Criaçao Conta</th>
+    <th>É Admin?</th>
+  </tr>
+  <% @user.each do |user| %>
+    <tr>
+      <td><%= image_tag user.imgurl, class:"Imagenzinha" %></td>
+      <td><%= link_to user.username, user_path(User.find(user.id))%></td>
+      <td><%= user.email %></td>
+      <td><%= user.idade %></td>
+      <td><%= user.created_at.strftime("%T") %></td>
+      <td><%= user.created_at.strftime("%F") %></td>
+
+      <td><%= user.admin %></td>
+
+    </tr>
+  <% end %>
+</table>

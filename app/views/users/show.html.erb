@@ -1,0 +1,75 @@
+<div class="PerfilInfos">
+<p class="InfosPerfilson">
+  <strong>Nome de Usuário: </strong>
+  <%= @user.username %>
+</p>
+<br>
+<p class="InfosPerfilson">
+
+  <strong>Email: </strong>
+  <%= @user.email%>
+</p>
+<br>
+<p class="InfosPerfilson">
+
+  <strong>Data de Nascimento: </strong>
+  <%= @user.idade%>
+</p>
+<br>
+<% if current_user == nil || current_user.id != @user.id  %>
+
+
+<%else%>
+<p class="InfosPerfilson">
+
+  <strong>Senha: </strong>
+  <p id="asterisco">
+    <% for letra in 1..current_user.senha.length do%>
+    *
+    <%end%>
+  </p>
+
+  <input type="button" name="0" value="Mostrar Senha"
+  onclick="mostrarsenha(this.name, <%=current_user.senha%>)" id="botao">
+
+</p>
+
+<%end%>
+
+
+</div>
+
+<div class="PerfilImagen">
+  <%= image_tag @user.imgurl, class:"ImagemMesmo" %>
+  <div class="DeletarEditar">
+
+<% if current_user == nil  %>
+
+<%else%>
+
+<% if current_user.id == @user.id || current_user.admin  %>
+
+<div class="">
+  <%= link_to 'Editar', edit_user_path(@user.id), class:'Novo' %>
+</div>
+
+<div class="">
+  <br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
+  <%= link_to 'Deletar Conta', user_path(@user.id),
+               method: :delete, data: { confirm: 'Are you sure?' }, class:'Novo' %>
+</div>
+
+<%end%>
+<%end%>
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>

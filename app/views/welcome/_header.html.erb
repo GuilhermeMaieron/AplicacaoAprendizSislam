@@ -1,6 +1,6 @@
 
 
-<input type="button" name="sla" value="=" style="position: absolute; font-size: 20px; z-index: 2; top: 32px; right: 8px" onclick='botao()'' >
+<input type="button" name="sla" value="=" style="position: absolute; font-size: 20px; z-index: 20; top: 32px; right: 8px" onclick='botao()'' >
 
 <div class="Menuzin", id="memu">
 
@@ -15,8 +15,8 @@
       <%= link_to 'Novo Artigo', new_article_path , class:"links" %>
 
 
-    <% if !!session[:login_id] %>
-        <%= link_to 'Perfil', login_path(current_user), class:"links"  %>
+    <% if !!session[:user_id] %>
+        <%= link_to 'Perfil', user_path(current_user), class:"links"  %>
 
         <%= image_tag current_user.imgurl, class:"fotoperfil" %>
 
@@ -35,7 +35,7 @@
         </div>
 
     <%else%>
-        <%= link_to 'Login/Cadastro', logins_lscreen_path, class:"links"  %>
+        <%= link_to 'User/Cadastro', users_lscreen_path, class:"links"  %>
     <%end%>
 
     </p>
@@ -45,21 +45,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-function botao()
-{
-  var memu = document.getElementById("memu");
-  if(memu.style.display == "none")
-  {
-    memu.style.display = "block";
-
-  }else{
-
-    memu.style.display = "none";
-  }
-
-}
-
-
-</script>

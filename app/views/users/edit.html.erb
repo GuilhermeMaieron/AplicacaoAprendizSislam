@@ -1,5 +1,5 @@
 <div class="PerfilInfos">
-  <%= form_for @login do |l| %>
+  <%= form_for @user do |l| %>
 
     <p class="InfosPerfilson">
       <strong>Nome de Usuário: </strong>
@@ -18,7 +18,7 @@
       <%= l.date_field :idade, class:'trecoupdate' %>
     </p>
     <br>
-    <% if current_user.id == @login.id %>
+    <% if current_user.id == @user.id %>
     <p class="InfosPerfilson">
 
       <strong>Senha: </strong>
@@ -49,15 +49,15 @@
 </div>
 
 <div class="PerfilImagen">
-  <%= image_tag @login.imgurl, class:"ImagemMesmo", id:'ImageTest' %>
+  <%= image_tag @user.imgurl, class:"ImagemMesmo", id:'ImageTest' %>
   <div class="DeletarEditar">
 
     <div class="">
-        <%= link_to 'Voltar', login_path(current_user), class:'Novo' %>
+        <%= link_to 'Voltar', user_path(current_user), class:'Novo' %>
     </div>
     <div class="">
       <br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br><br> <br>
-      <%= link_to 'Deletar Conta', login_path(current_user),
+      <%= link_to 'Deletar Conta', user_path(current_user),
                    method: :delete, data: { confirm: 'Are you sure?' } , class:'Novo'%>
     </div>
 
@@ -65,42 +65,3 @@
 
   </div>
 </div>
-
-
-
-<script type="text/javascript">
-  var asteriscooos = '';
-
-  function mostrarsenha(index, senha_Var)
-  {
-
-
-    if(index == 0)
-    {
-      var txt = document.getElementById('asterisco');
-      asteriscooos = txt.innerText;
-      txt.innerText = senha_Var;
-      document.getElementById('botao').name = 1;
-      document.getElementById('botao').value = "Esconder Senha";
-
-
-    }else{
-      var txt = document.getElementById('asterisco');
-      txt.innerText = asteriscooos;
-      document.getElementById('botao').name = 0;
-      document.getElementById('botao').value = "Mostrar Senha";
-
-    }
-
-
-  }
-
-  function mostrarimagem()
-  {
-    var imgg = document.getElementById('ImageTest');
-    var urll = document.getElementById('Txt');
-    imgg.src = urll.value;
-
-  }
-
-</script>

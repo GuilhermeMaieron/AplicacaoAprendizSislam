@@ -1,0 +1,34 @@
+$margem: 5px;
+$borda-redonda: 5px;
+
+
+.SuaMsg {
+  background-color: #c0d7bc;
+  text-align: right;
+  margin: $margem;
+  border-radius: $borda-redonda;
+
+}
+
+.msgDeles {
+
+  background-color: silver;
+  text-align: left;
+  margin: $margem;
+  border-radius: $borda-redonda;
+}
+
+.delete-chat{
+  color: red;
+  width: 30%;
+  font-size: 10px;
+}
+
+.delete-msg{
+  font-size: 8px;
+  position: absolute;
+  position: absolute;
+  left: 0px;
+  margin-top: -2.5%;
+  width: 10%;
+}

@@ -12,13 +12,12 @@
       <td><%= article.title %></td>
       <td><%= article.text %></td>
       <td><%= article.data %></td>
-      <td><%= Login.find(article.login_id).username %></td>
-      <td><%= link_to Login.find(article.login_id).username, login_path(Login.find(article.login_id))%></td>
+      <td><%= User.find(article.user_id).username %></td>
+      <td><%= link_to User.find(article.user_id).username, user_path(User.find(article.user_id))%></td>
       <td><%= link_to 'Ver', article_path(article) ,class:'trecoupdate'%></td>
-      <% if session[:login_id] == article.login_id || current_user.admin %>
-      <td><%= link_to 'Editar', edit_article_path(article),class:'trecoupdate' %></td>
-      <td><%= link_to 'Deletar', article_path(article),
-                   method: :delete, data: { confirm: 'Are you sure?' } ,class:'deletearticle'%></td>
+      <% if session[:user_id] == article.user_id || current_user.try(:admin) %>
+        <td><%= link_to 'Editar', edit_article_path(article),class:'trecoupdate' %></td>
+        <td><%= link_to 'Deletar', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } ,class:'deletearticle'%></td>
       <%end%>
 
 
